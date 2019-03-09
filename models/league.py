@@ -1,22 +1,20 @@
+import json
+
 class League:
-    def __init__(self):
-        self._teams = self._games = []
-    
-    def __init__(self, teams):
-        self._teams = teams
-        self._games = []
-    
-    @property
-    def teams(self) {
-        return self._teams
-    }
+    def __init__(self, name):
+        self.__teams = self.__games = []
+        self.name = name
 
-    @teams.setter
-    def teams(self, team):
-        self._teams.append(team)
-    
-    @teams.deleter
-    def teams(self, team):
-        self._teams.remove(team)
+    def __init__(self, name, teams):
+        self.__teams = teams
+        self__name = name
+        self.__games = []
 
+    def playGame(self, team1, team2):
+        index1 = self.__teams.index(team1)
+        index2 = self.__teams.index(team2)
+        # if index1 != index2:
+        #     self._games.append(Game(team1, team2))
     
+    def addTeam(self, team):
+        self.__teams.append(team)
