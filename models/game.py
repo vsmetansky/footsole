@@ -1,10 +1,12 @@
+import random, math
+
 class Game: 
     def __init__(self, host, guest):
         self.host = host
         self.guest = guest
         self.score = {
-            self.host: 1,
-            self.guest: 2
+            self.host: math.floor(host.strength * random.uniform(0, 1)),
+            self.guest: math.floor(guest.strength * random.uniform(0, 1))
         }
 
     def __eq__(self, other): 

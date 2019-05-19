@@ -18,7 +18,9 @@ class League:
         return False
 
     def __ne__(self, other): 
-        return self.name != other.name or self.teams != other.teams or self.games != other.games
+        if isinstance(other, self.__class__):
+            return self.name != other.name or self.teams != other.teams or self.games != other.games
+        return True
 
     @staticmethod
     def getAll():
@@ -55,6 +57,29 @@ class League:
         except:
             print('Goddammit')
         return None
+    
+
+    @staticmethod
+    def playGame(league):
+        try:
+            if League.__exists(league):
+                #choose random host and guest from league's teams, host != guest
+                #if game with such host and guest exists, generate another host and guest
+                #repeat until suitable teams are found
+            
+
+        except:
+            print('Goddammit')
+
+    @staticmethod
+    def __exists(league):
+        try:
+            leagues = json.load(DATA_FILE)
+            return league in leagues
+        except:
+            print('Goddammit')
+        return False
+    
     # @staticmethod
     # def update(league, index):
     #     data = json.load(DATA_FILE)
