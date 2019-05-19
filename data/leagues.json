@@ -1,4 +1,53 @@
-{
-    "nextId": 0,
-    "leagues": []
-}
+[
+    {
+        "name": "UPL",
+        "teams": [
+            {
+                "name": "Dynamo Kiev",
+                "strength": 3
+            },
+            {
+                "name": "Shakhtar Donetsk",
+                "strength": 3
+            }
+        ],
+        "games": [
+            {
+                
+            },
+            {
+
+            }
+        ]
+    },
+    {
+        "name": "EPL",
+        "teams": [
+            {
+                "name": "Liverpool",
+                "strength": 10
+            },
+            {
+                "name": "Chelsea",
+                "strength": 7
+            },
+            {
+                "name": "Arsenal"
+            },
+            {
+                "name": "Manchester City"
+            },
+            {
+                "name": "Manchester United"
+            }
+        ],
+        "games": [
+            {
+                
+            },
+            {
+
+            }
+        ]
+    }
+]

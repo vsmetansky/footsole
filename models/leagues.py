@@ -5,6 +5,8 @@ DATA_FILE = open(DATA_PATH, 'rw')
 
 
 class Leagues:
+        
+
     @staticmethod
     def add(league):
         data = json.load(DATA_FILE)
