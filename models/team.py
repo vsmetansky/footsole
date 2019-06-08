@@ -11,4 +11,6 @@ class Team:
         return False
 
     def __ne__(self, other):
-        return self.name != other.name or self.strength != other.strength
+        if isinstance(other, self.__class__):
+            return self.name != other.name or self.strength != other.strength
+        return True

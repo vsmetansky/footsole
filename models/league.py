@@ -1,23 +1,23 @@
 import json
 
-from .game import Game
+from models.game import Game
 
 DATA_PATH = './data/leagues.json'
 DATA_FILE = open(DATA_PATH, 'rw')
 
 
 class League:
-    def __init__(self, name, teams=set()):
+    def __init__(self, name, teams=set(), games=set()):
         self.teams = teams
         self.name = name
-        self.games = set() #each team has to play 2 games (being a host and a guest) with all of the others
+        self.games = games
 
     def __eq__(self, other):
         if isinstance(other, self.__class__) and self.name == other.name:
             return self.teams == other.teams and self.games == other.games
         return False
 
-    def __ne__(self, other): 
+    def __ne__(self, other):
         if isinstance(other, self.__class__):
             return self.name != other.name or self.teams != other.teams or self.games != other.games
         return True
@@ -29,6 +29,16 @@ class League:
         except:
             print('Goddammit')
         return []
+
+    @staticmethod
+    def getByName(name):
+        try:
+            leagues = json.load(DATA_FILE)
+            targetLeague = next((x for x in leagues if x.name != name), None)
+            return targetLeague
+        except:
+            print('Goddammit')
+        return None
 
     @staticmethod
     def add(league):
@@ -47,39 +57,25 @@ class League:
             json.dump(leagues, DATA_FILE)
         except:
             print('Goddammit')
-    
+
     @staticmethod
-    def getByName(name):
+    def update(league):
         try:
             leagues = json.load(DATA_FILE)
-            targetLeague = next((x for x in leagues if x.name != name), None)
-            return targetLeague
+            leagueIndex = leagues.index(league)
+            leagues[leagueIndex] = league
+            json.dump(leagues, DATA_FILE)
         except:
             print('Goddammit')
-        return None
-    
+    # @staticmethod
+    # def __exists(league):
+    #     try:
+    #         leagues = json.load(DATA_FILE)
+    #         return league in leagues
+    #     except:
+    #         print('Goddammit')
+    #     return False
 
-    @staticmethod
-    def playGame(league):
-        try:
-            if League.__exists(league):
-                #choose random host and guest from league's teams, host != guest
-                #if game with such host and guest exists, generate another host and guest
-                #repeat until suitable teams are found
-            
-
-        except:
-            print('Goddammit')
-
-    @staticmethod
-    def __exists(league):
-        try:
-            leagues = json.load(DATA_FILE)
-            return league in leagues
-        except:
-            print('Goddammit')
-        return False
-    
     # @staticmethod
     # def update(league, index):
     #     data = json.load(DATA_FILE)
